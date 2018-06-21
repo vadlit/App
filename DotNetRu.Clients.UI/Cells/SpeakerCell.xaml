@@ -1,27 +1,27 @@
 ﻿<ContentView 
     xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    xmlns:imagecircle="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
-    xmlns:converters="clr-namespace:DotNetRu.Clients.UI.Converters;assembly=DotNetRu.Clients.UI"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
     x:Class="DotNetRu.Clients.UI.Cells.SpeakerCellView">
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <converters:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
-        </ResourceDictionary>
-    </ContentView.Resources>
     <ContentView.Content>
         <Grid Padding="16,5" ColumnSpacing="{StaticResource StandardSpacing}">
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
               </Grid.ColumnDefinitions>
-              <imagecircle:CircleImage FillColor="{DynamicResource Primary}" 
-                                       Source="{Binding Avatar, Converter={StaticResource ByteArrayToImageSourceConverter}}"                                       
-                                       VerticalOptions="Center"
-                                       Aspect="AspectFill"
-                                       WidthRequest="44"
-                                       HeightRequest="44">
-              </imagecircle:CircleImage>
+            <forms:CachedImage x:Name="Image" 
+                               Source="{Binding Avatar}"
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center"
+                               Aspect="AspectFill" 
+                               HeightRequest="44" 
+                               WidthRequest="44"
+                               LoadingPlaceholder="loading_apple.gif">
+                <forms:CachedImage.Transformations>
+                    <transformations:CircleTransformation/>
+                </forms:CachedImage.Transformations>
+            </forms:CachedImage>
             <StackLayout Grid.Column="1" 
                            VerticalOptions="Center"
                            Spacing="{StaticResource SmallSpacing}">

@@ -2,6 +2,8 @@
 {
     using System.Collections.Generic;
 
+    using Xamarin.Forms;
+
     public sealed class SpeakerModel
     {
         public string Id { get; set; }
@@ -63,6 +65,6 @@
             }
         }
 
-        public byte[] Avatar { get; set; }
+        public ImageSource Avatar { get; set; }
     }
 }

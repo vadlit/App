@@ -84,8 +84,8 @@
             }
         }
 
-        public byte[] SpeakerAvatar => this.Speakers.Count() > 1
-                                                ? RealmService.ExtractResource(
+        public ImageSource SpeakerAvatar => this.Speakers.Count() > 1
+                                                ? ImageSource.FromResource(
                                                     "DotNetRu.DataStore.Audit.Storage.SeveralSpeakers.png")
                                                 : this.Speakers.Single().Avatar;
 

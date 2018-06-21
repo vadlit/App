@@ -51,6 +51,8 @@ namespace DotNetRu.Clients.UI.Cells
         public SpeakerCellView()
         {
             this.InitializeComponent();
+
+            this.Image.CacheKeyFactory = new CustomCacheKeyFactory();
         }
     }
 }

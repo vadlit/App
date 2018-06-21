@@ -8,10 +8,10 @@
 
     public partial class SpeakerFacePage
     {
-        public SpeakerFacePage(byte[] image)
+        public SpeakerFacePage(ImageSource image)
         {
             this.InitializeComponent();
-            this.faceImage.Source = ImageSource.FromStream(() => new MemoryStream(image));
+            this.faceImage.Source = image;
         }
 
         public override AppPage PageType => AppPage.SpeakerFace;
