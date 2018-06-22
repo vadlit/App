@@ -1,22 +1,18 @@
-﻿using DotNetRu.Clients.Portable.Model;
-using DotNetRu.Clients.UI.Pages.Speakers;
-using DotNetRu.DataStore.Audit.Models;
-using Xamarin.Forms;
-
-namespace DotNetRu.Clients.UI.Cells
+﻿namespace DotNetRu.Clients.UI.Cells
 {
+    using DotNetRu.Clients.Portable.Model;
+    using DotNetRu.Clients.UI.Pages.Speakers;
+    using DotNetRu.DataStore.Audit.Models;
+
+    using Xamarin.Forms;
+
     public class SpeakerCell : ViewCell
     {
         readonly INavigation navigation;
 
-        readonly string sessionId;
-
-        public SpeakerCell(string sessionId, INavigation navigation = null)
+        public SpeakerCell(INavigation navigation = null)
         {
-            this.sessionId = sessionId;
-            this.Height = 60;
             this.View = new SpeakerCellView();
-            this.StyleId = "disclosure";
             this.navigation = navigation;
         }
 
@@ -35,14 +31,7 @@ namespace DotNetRu.Clients.UI.Cells
 
             App.Logger.TrackPage(AppPage.Speaker.ToString(), speaker.FullName);
 
-            if (Device.RuntimePlatform == Device.UWP)
-            {
-                await this.navigation.PushAsync(new SpeakerDetailsPageUWP(this.sessionId) { SpeakerModel = speaker });
-            }
-            else
-            {
-                await this.navigation.PushAsync(new SpeakerDetailsPage { SpeakerModel = speaker });
-            }
+            await this.navigation.PushAsync(new SpeakerDetailsPage { SpeakerModel = speaker });
         }
     }
 

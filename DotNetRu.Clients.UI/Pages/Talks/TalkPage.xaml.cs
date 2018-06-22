@@ -27,20 +27,8 @@
                         return;
                     }
 
-                    ContentPage destination;
-
-                    if (Device.RuntimePlatform == Device.UWP)
-                    {
-                        var speakerDetailsUwp =
-                            new SpeakerDetailsPageUWP(this.talkViewModel.TalkModel.TalkId) { SpeakerModel = speaker };
-                        destination = speakerDetailsUwp;
-                    }
-                    else
-                    {
-                        var speakerDetails =
-                            new SpeakerDetailsPage() { SpeakerModel = speaker };
-                        destination = speakerDetails;
-                    }
+                    var speakerDetails = new SpeakerDetailsPage { SpeakerModel = speaker };
+                    ContentPage destination = speakerDetails;
 
                     await NavigationService.PushAsync(this.Navigation, destination);
                     this.ListViewSpeakers.SelectedItem = null;

@@ -1,11 +1,12 @@
-﻿using DotNetRu.Clients.Portable.Model;
-using DotNetRu.Clients.Portable.ViewModel;
-using DotNetRu.Clients.UI.Helpers;
-using DotNetRu.DataStore.Audit.Models;
-using Xamarin.Forms;
-
-namespace DotNetRu.Clients.UI.Pages.Speakers
+﻿namespace DotNetRu.Clients.UI.Pages.Speakers
 {
+    using DotNetRu.Clients.Portable.Model;
+    using DotNetRu.Clients.Portable.ViewModel;
+    using DotNetRu.Clients.UI.Helpers;
+    using DotNetRu.DataStore.Audit.Models;
+
+    using Xamarin.Forms;
+
     public partial class SpeakersPage
     {
         public override AppPage PageType => AppPage.Speakers;
@@ -31,16 +32,7 @@ namespace DotNetRu.Clients.UI.Pages.Speakers
                         return;
                     }
 
-                    ContentPage destination;
-
-                    if (Device.RuntimePlatform == Device.UWP)
-                    {
-                        destination = new SpeakerDetailsPageUWP(speaker);
-                    }
-                    else
-                    {
-                        destination = new SpeakerDetailsPage(speaker);
-                    }
+                    ContentPage destination = new SpeakerDetailsPage(speaker);
 
                     await NavigationService.PushAsync(this.Navigation, destination);
                     this.ListViewSpeakers.SelectedItem = null;
