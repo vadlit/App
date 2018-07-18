@@ -13,6 +13,7 @@
             VerticalOptions="FillAndExpand">
             <ListView 
                 x:Name="ListViewSpeakers"
+                CachingStrategy="RecycleElement"
                 ItemsSource="{Binding Speakers}"
                 IsGroupingEnabled="true"
                 GroupDisplayBinding="{Binding Key}"

@@ -10,8 +10,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
               </Grid.ColumnDefinitions>
-            <forms:CachedImage x:Name="Image" 
-                               Source="{Binding Avatar}"
+            <forms:CachedImage x:Name="SpeakerImage" 
                                HorizontalOptions="Center" 
                                VerticalOptions="Center"
                                Aspect="AspectFill" 

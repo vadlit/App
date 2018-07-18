@@ -41,7 +41,22 @@
         {
             this.InitializeComponent();
 
-            this.Image.CacheKeyFactory = new CustomCacheKeyFactory();
+            this.SpeakerImage.CacheKeyFactory = new CustomCacheKeyFactory();
+        }
+
+        protected override void OnBindingContextChanged()
+        {
+            // to prevent showing old images occasionally
+            this.SpeakerImage.Source = null;
+
+            if (!(this.BindingContext is SpeakerModel speakerModel))
+            {
+                return;
+            }
+
+            this.SpeakerImage.Source = speakerModel.Avatar;
+
+            base.OnBindingContextChanged();
         }
     }
 }
