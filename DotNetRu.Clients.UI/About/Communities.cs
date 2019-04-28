@@ -1,4 +1,4 @@
-﻿namespace DotNetRu.Clients.Portable.Model
+namespace DotNetRu.Clients.Portable.Model
 {
     using DotNetRu.DataStore.Audit.Services;
     using DotNetRu.Utils.Helpers;
@@ -36,6 +36,14 @@
                     VKLink = AboutThisApp.KrasnoyarskLink,
                     ImageSource = LogoService.KryDotNetLogo
                 };
+
+        public static CommunityModel Omsk =>
+            new CommunityModel
+            {
+                Name = "Omsk",
+                VKLink = AboutThisApp.OmskLink,
+                ImageSource = LogoService.OmsDotNetLogo
+            };
 
         public static CommunityModel Saratov =>
             new CommunityModel
